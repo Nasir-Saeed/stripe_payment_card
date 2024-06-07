@@ -1,3 +1,9 @@
 .navigationBar {
     margin-left: 100px;
 }
+
+@media (max-width: 767px) {
+    .navigationBar {
+        margin-left: 10px;
+    }
+}

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import './CheckoutForm.css';
-import formImage from '../img/form-image.jpg'
 
 const supportedCountries = [
     { name: 'United States', code: 'US' },
@@ -114,10 +113,10 @@ const CheckoutForm = () => {
 
     return (
         <form onSubmit={handleSubmit} className="checkout-form">
-            <img src={formImage} alt='Form Image'/>
+           
             {/* Amount */}
             <label>
-                Amount
+                Payment Amount
                 <input
                     type="number"
                     value={amount}
@@ -127,7 +126,7 @@ const CheckoutForm = () => {
             </label>
             {/* Name on card */}
             <label>
-                Name on card
+                Client Full Name
                 <input
                     type="text"
                     value={name}
@@ -137,7 +136,7 @@ const CheckoutForm = () => {
             </label>
             {/* Email */}
             <label>
-                Email
+                Email Address
                 <input
                     type="email"
                     value={email}

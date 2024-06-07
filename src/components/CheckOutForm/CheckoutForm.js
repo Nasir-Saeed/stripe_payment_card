@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import './CheckoutForm.css';
+import bgImg from '../img/bg-img.png';
 
 const supportedCountries = [
     { name: 'United States', code: 'US' },
@@ -41,7 +42,7 @@ const supportedCountries = [
     { name: 'Slovenia', code: 'SI' },
     { name: 'Spain', code: 'ES' },
     { name: 'Sweden', code: 'SE' },
-    { name: 'Switzerland', code: 'CH' }
+    { name: 'Switzerland', code: 'CH' },
 ];
 
 const CheckoutForm = () => {
@@ -58,6 +59,7 @@ const CheckoutForm = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         setPaymentProcessing(true);
+        setError(null);
 
         const cardElement = elements.getElement(CardElement);
 
@@ -107,76 +109,85 @@ const CheckoutForm = () => {
             if (result.paymentIntent.status === 'succeeded') {
                 setPaymentProcessing(false);
                 alert('Payment Successful!');
+                // Reset form fields
+                setEmail('');
+                setName('');
+                setCountry('US');
+                setPostalCode('');
+                setAmount('');
+                cardElement.clear();
             }
         }
     };
 
     return (
         <form onSubmit={handleSubmit} className="checkout-form">
-           
-            {/* Amount */}
-            <label>
-                Payment Amount
-                <input
-                    type="number"
-                    value={amount}
-                    onChange={(e) => setAmount(e.target.value)}
-                    required
-                />
-            </label>
-            {/* Name on card */}
-            <label>
-                Client Full Name
-                <input
-                    type="text"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    required
-                />
-            </label>
-            {/* Email */}
-            <label>
-                Email Address
-                <input
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                />
-            </label>
-            {/* Country or Region */}
-            <label>
-                Country or Region
-                <select
-                    value={country}
-                    onChange={(e) => setCountry(e.target.value)}
-                    required
-                >
-                    {supportedCountries.map((country) => (
-                        <option key={country.code} value={country.code}>
-                            {country.name}
-                        </option>
-                    ))}
-                </select>
-                <input
-                    type="text"
-                    placeholder="Postal Code"
-                    value={postalCode}
-                    onChange={(e) => setPostalCode(e.target.value)}
-                    required
-                />
-            </label>
-            {/* Card Information */}
-            <label>
-                Card Information
-                <div className="card-element-wrapper mt-1">
-                    <CardElement />
-                </div>
-            </label>
-            {error && <div className="error">{error}</div>}
-            <button type="submit" disabled={!stripe || paymentProcessing}>
-                {paymentProcessing ? 'Processing...' : 'Pay'}
-            </button>
+            <img src={bgImg} alt='Form Image' />
+            <div className="checkout-forms">
+                {/* Amount */}
+                <label>
+                    Payment Amount
+                    <input
+                        type="number"
+                        value={amount}
+                        onChange={(e) => setAmount(e.target.value)}
+                        required
+                    />
+                </label>
+                {/* Name on card */}
+                <label>
+                    Name
+                    <input
+                        type="text"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        required
+                    />
+                </label>
+                {/* Email */}
+                <label>
+                    Email
+                    <input
+                        type="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        required
+                    />
+                </label>
+                {/* Country or Region */}
+                <label>
+                    Country
+                    <select
+                        value={country}
+                        onChange={(e) => setCountry(e.target.value)}
+                        required
+                    >
+                        {supportedCountries.map((country) => (
+                            <option key={country.code} value={country.code}>
+                                {country.name}
+                            </option>
+                        ))}
+                    </select>
+                    <input
+                        type="text"
+                        placeholder="Postal Code"
+                        value={postalCode}
+                        onChange={(e) => setPostalCode(e.target.value)}
+                        required
+                    />
+                </label>
+                {/* Card Information */}
+                <label>
+                    Card Information
+                    <div className="card-element-wrapper mt-1">
+                        <CardElement />
+                    </div>
+                </label>
+                {error && <div className="error">{error}</div>}
+                <button type="submit" disabled={!stripe || paymentProcessing}>
+                    {paymentProcessing ? 'Processing...' : 'Pay'}
+                </button>
+            </div>
         </form>
     );
 };

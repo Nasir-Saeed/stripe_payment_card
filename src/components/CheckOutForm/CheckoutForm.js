@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import './CheckoutForm.css';
+import formImage from '../img/form-image.jpg'
 
 const supportedCountries = [
     { name: 'United States', code: 'US' },
@@ -113,6 +114,8 @@ const CheckoutForm = () => {
 
     return (
         <form onSubmit={handleSubmit} className="checkout-form">
+            <img src={formImage} alt='Form Image'/>
+            {/* Amount */}
             <label>
                 Amount
                 <input
@@ -122,6 +125,7 @@ const CheckoutForm = () => {
                     required
                 />
             </label>
+            {/* Name on card */}
             <label>
                 Name on card
                 <input
@@ -131,6 +135,7 @@ const CheckoutForm = () => {
                     required
                 />
             </label>
+            {/* Email */}
             <label>
                 Email
                 <input
@@ -140,8 +145,9 @@ const CheckoutForm = () => {
                     required
                 />
             </label>
+            {/* Country or Region */}
             <label>
-                Country or region
+                Country or Region
                 <select
                     value={country}
                     onChange={(e) => setCountry(e.target.value)}
@@ -161,15 +167,13 @@ const CheckoutForm = () => {
                     required
                 />
             </label>
+            {/* Card Information */}
             <label>
-                Card information
-                <div className="card-element-wrapper">
+                Card Information
+                <div className="card-element-wrapper mt-1">
                     <CardElement />
                 </div>
             </label>
-
-
-
             {error && <div className="error">{error}</div>}
             <button type="submit" disabled={!stripe || paymentProcessing}>
                 {paymentProcessing ? 'Processing...' : 'Pay'}

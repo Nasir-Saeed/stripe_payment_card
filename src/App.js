@@ -3,7 +3,8 @@ import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import PaymentPage from './components/PaymentPage';
 import Navbar from './components/Navbar';
-import './App.css';
+import Footer from './components/Footer';
+// import './App.css';
 
 const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY);
 
@@ -16,6 +17,7 @@ function App() {
     <Elements stripe={stripePromise}>
       <PaymentPage />
     </Elements>
+    <Footer/>
     </>
   );
 }

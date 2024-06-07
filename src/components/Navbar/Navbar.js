@@ -1,5 +1,5 @@
 import React from "react";
-import DoctorpapersLogo from './img/doctorpapers-logo.png'
+import DoctorpapersLogo from '../img/doctorpapers-logo.png'
 import './Navbar.css'
 
 function NavbarComponent() {

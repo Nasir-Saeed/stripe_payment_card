@@ -16,7 +16,15 @@ function NavbarComponent() {
                         <li className="nav-item active">
                             <a className="nav-link" href="https://doctorpapers.com/">Home</a>
                         </li>
-
+                        <li className="nav-item active">
+                            <a className="nav-link" href="https://doctorpapers.com/about/">About</a>
+                        </li>
+                        <li className="nav-item active">
+                            <a className="nav-link" href="https://doctorpapers.com/contact/">Contact</a>
+                        </li>
+                        <li className="nav-item active">
+                            <a className="nav-link" href="https://doctorpapers.com/blog/">Blog</a>
+                        </li>
                     </ul>
                 </div>
             </nav>

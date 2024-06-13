@@ -2,8 +2,53 @@
     margin-left: 100px;
 }
 
-@media (max-width: 767px) {
+.doctor-paper-button {
+    color: #fff;
+    background-color: #3195f9;
+    font-size: 17px;
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    font-weight: 400;
+    padding: 14px 13px;
+    display: block;
+    padding-left: 27px;
+    padding-right: 27px;
+    border: 2px solid #3195f9;
+    float: right;
+
+}
+
+
+.doctor-paper-button a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.doctor-paper-button:hover {
+    opacity: 1 !important;
+    color: #fff !important;
+    background-color: #353333;
+    border: 2px solid #353333;
+}
+
+.collapse:not(.show) {
+    display: block !important;
+}
+
+
+@media (max-width: 1020px) {
     .navigationBar {
+        margin-left: 5px;
+    }
+
+    .navbar-mobile{
+        display: flow;
         margin-left: 10px;
+    }
+
+    .doctor-paper-button {
+        padding: 10px;
+        float: left;
     }
 }

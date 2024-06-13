@@ -4,10 +4,14 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 
 const app = express();
-const stripe = Stripe(process.env.REACT_APP_STRIPE_SECRET_KEY);
+const stripe = Stripe('');
 
 app.use(bodyParser.json());
 app.use(cors());
+
+app.get('/', (req, res) => {
+  res.send("<h1>Hello World</h1>");
+})
 
 app.post('/create-payment-intent', async (req, res) => {
   const { amount } = req.body;
@@ -24,4 +28,4 @@ app.post('/create-payment-intent', async (req, res) => {
   }
 });
 
-app.listen(3001, () => console.log('Server running on port 3001'));
+app.listen(3000, () => console.log('Server running on port 3000'));

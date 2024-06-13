@@ -1,11 +1,13 @@
 import React from 'react'
+import './Footer.css'
 
 export default function Footer() {
     return (
-        <nav className="navbar bg-dark" >
-            <div className="d-block m-auto">
-                <p className='text-white'>Copyright © 2024 DoctorPapers. All Rights Reserved.</p>
+        <div className="navbar bg-dark" >
+            <div className="d-block m-auto footer-pd-all">
+              
+                <p className='text-white'>Copyright © 2024 <a href="https://doctorpapers.com/" className='footer-bottom-link'> DoctorPapers </a>. All Rights Reserved.</p>
             </div>
-        </nav>
+        </div>
     )
 }

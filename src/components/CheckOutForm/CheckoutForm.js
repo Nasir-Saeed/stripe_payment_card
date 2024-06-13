@@ -120,6 +120,10 @@ const CheckoutForm = () => {
         }
     };
 
+    const cardElementOptions = {
+        hidePostalCode: true,
+    };
+
     return (
         <form onSubmit={handleSubmit} className="checkout-form">
             <img src={bgImg} alt='Form Image' />
@@ -180,7 +184,7 @@ const CheckoutForm = () => {
                 <label>
                     Card Information
                     <div className="card-element-wrapper mt-1">
-                        <CardElement />
+                        <CardElement options={cardElementOptions} />
                     </div>
                 </label>
                 {error && <div className="error">{error}</div>}
@@ -193,3 +197,4 @@ const CheckoutForm = () => {
 };
 
 export default CheckoutForm;
+

@@ -6,9 +6,8 @@ import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
 // import './App.css';
 
-const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY);
+const stripePromise = loadStripe('');
 
-console.log('Stripe Publishable Key:', process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY);
 
 function App() {
   return (

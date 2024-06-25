@@ -10,7 +10,6 @@ const PaymentPage = () => {
       {/* <img src={formImage} alt='Form Image' width={500} height={200}/> */}
       </div>
       <div className="form-column">
-
         <CheckoutForm />
       </div>
     </div>

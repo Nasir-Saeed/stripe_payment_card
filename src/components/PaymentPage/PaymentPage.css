@@ -18,11 +18,13 @@
   padding: 20px;
 } */
 
+
 .form-column img {
-  max-width: 100%;
-  border-radius: 10px;
-  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
-  animation: fadeIn 1s ease-in-out;
+  width: 40%;
+  display: block;
+  margin: auto;
+  margin-top: -20px;
+  margin-bottom: 10px;
 }
 
 .form-column {

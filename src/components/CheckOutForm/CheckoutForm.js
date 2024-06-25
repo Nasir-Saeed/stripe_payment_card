@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import './CheckoutForm.css';
-import bgImg from '../img/bg-img.png';
+import bgImg from '../img/credit-card-logos.png';
 
 const supportedCountries = [
     { name: 'United States', code: 'US' },
@@ -82,7 +82,7 @@ const CheckoutForm = () => {
             return;
         }
 
-        const response = await fetch('http://localhost:3001/create-payment-intent', {
+        const response = await fetch('https://pay.usdesigncentral.com/create-payment-intent', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -126,7 +126,7 @@ const CheckoutForm = () => {
 
     return (
         <form onSubmit={handleSubmit} className="checkout-form">
-            <img src={bgImg} alt='Form Image' />
+            <h1 className="paymentHeading">Enter Your Payments Details</h1>
             <div className="checkout-forms">
                 {/* Amount */}
                 <label>
@@ -138,48 +138,76 @@ const CheckoutForm = () => {
                         required
                     />
                 </label>
-                {/* Name on card */}
-                <label>
-                    Name
-                    <input
-                        type="text"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                        required
-                    />
-                </label>
-                {/* Email */}
-                <label>
-                    Email
-                    <input
-                        type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        required
-                    />
-                </label>
-                {/* Country or Region */}
-                <label>
-                    Country
-                    <select
-                        value={country}
-                        onChange={(e) => setCountry(e.target.value)}
-                        required
-                    >
-                        {supportedCountries.map((country) => (
-                            <option key={country.code} value={country.code}>
-                                {country.name}
-                            </option>
-                        ))}
-                    </select>
-                    <input
-                        type="text"
-                        placeholder="Postal Code"
-                        value={postalCode}
-                        onChange={(e) => setPostalCode(e.target.value)}
-                        required
-                    />
-                </label>
+
+                <div class="row">
+                    <div class="col">
+                        {/* Name on card */}
+                        <label>
+                            Name
+                            <input
+                                type="text"
+                                value={name}
+                                onChange={(e) => setName(e.target.value)}
+                                required
+                                className='form-control'
+                            />
+                        </label>
+                    </div>
+                    <div class="col">
+                        {/* Email */}
+                        <label>
+                            Email
+                            <input
+                                type="email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                required
+                                className='form-control'
+
+                            />
+                        </label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        {/* Country or Region */}
+                        <label>
+                            Country
+                            <select
+                                value={country}
+                                onChange={(e) => setCountry(e.target.value)}
+                                required
+                                className='form-control'
+
+                            >
+                                {supportedCountries.map((country) => (
+                                    <option key={country.code} value={country.code}>
+                                        {country.name}
+                                    </option>
+                                ))}
+                            </select>
+                        </label>
+
+
+                    </div>
+                    <div class="col">
+                        {/* Email */}
+                        <label>
+                            Postal Code
+                            <input
+                                type="text"
+                                placeholder="Postal Code"
+                                value={postalCode}
+                                onChange={(e) => setPostalCode(e.target.value)}
+                                required
+                                className='form-control'
+
+                            />
+                        </label>
+                    </div>
+                </div>
+              
                 {/* Card Information */}
                 <label>
                     Card Information
@@ -187,6 +215,8 @@ const CheckoutForm = () => {
                         <CardElement options={cardElementOptions} />
                     </div>
                 </label>
+                <img src={bgImg} alt='Form Image' />
+
                 {error && <div className="error">{error}</div>}
                 <button type="submit" disabled={!stripe || paymentProcessing}>
                     {paymentProcessing ? 'Processing...' : 'Pay'}

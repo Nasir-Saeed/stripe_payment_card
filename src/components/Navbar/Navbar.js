@@ -20,10 +20,10 @@ function NavbarComponent() {
                                         <a className="nav-link" href="https://doctorpapers.com/">Home</a>
                                     </li>
                                     <li className="nav-item active">
-                                        <a className="nav-link" href="https://doctorpapers.com/about/">About</a>
+                                        <a className="nav-link" href="https://doctorpapers.com/about/">About Us</a>
                                     </li>
                                     <li className="nav-item active">
-                                        <a className="nav-link" href="https://doctorpapers.com/contact/">Contact</a>
+                                        <a className="nav-link" href="https://doctorpapers.com/contact/">Contact Us</a>
                                     </li>
                                     <li className="nav-item active">
                                         <a className="nav-link" href="https://doctorpapers.com/blog/">Blog</a>
@@ -32,7 +32,7 @@ function NavbarComponent() {
                             </div>
                         </div>
                         <div class="col-6 col-md-4">
-                            <button className="doctor-paper-button"><a href="https://doctorpapers.com/contact/">Let's Connect </a></button>
+                            <button className="doctor-paper-button"><a href="https://doctorpapers.com/contact/" className="nav-link">Let's Connect </a></button>
                         </div>
                     </nav>
                 </div>
